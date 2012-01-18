@@ -25,11 +25,11 @@ module FnordMetric
     opts[:redis_url] ||= "redis://localhost:6379"
     opts[:redis_prefix] ||= "fnordmetric"
 
-    opts[:inbound_stream] ||= ["0.0.0.0", "1337"]
-    opts[:web_interface] ||= ["0.0.0.0", "4242"]
+    opts[:inbound_stream] = ["0.0.0.0", "1337"] if opts[:inbound_stream].nil?
+    opts[:web_interface] = ["0.0.0.0", "4242"] if opts[:web_interface].nil?
 
-    opts[:start_worker] ||= true
-    opts[:print_stats] ||= 3
+    opts[:start_worker] = true if opts[:start_worker].nil?
+    opts[:print_stats] = 3 if opts[:print_stats].nil?
 
     # events that aren't processed after 2 min get dropped
     opts[:event_queue_ttl] ||= 120
